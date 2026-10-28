@@ -1,5 +1,5 @@
 <div align="center">
-  <img src="project-exe.jpg" width="100%" />
+  <img src="348e2c524ecaafa6f235e7256bc80a3e.jpg" width="100%" />
 </div>
 
 <div align="center">
