@@ -1,4 +1,8 @@
 <div align="center">
+  <img src="project-exe.jpg" width="100%" />
+</div>
+
+<div align="center">
 
 # Jonathan Antunes
 
