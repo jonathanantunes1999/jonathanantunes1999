@@ -1,0 +1,236 @@
+<title>Blank Studios ASCII Banner</title>
+<style>
+  :root { color-scheme: dark }
+  * { margin: 0; padding: 0; box-sizing: border-box }
+  body { background: #0a0a0f; display: flex; align-items: center; justify-content: center; min-height: 100vh; overflow: hidden; }
+  canvas { display: block; width: 100%; max-width: 1500px; height: auto; }
+</style>
+<canvas id="c"></canvas>
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const W = 1500, H = 500;
+canvas.width = W; canvas.height = H;
+
+const CODE_CHARS = '01{}[]();=><const let fn return if else for true false null 0123456789'.split('');
+
+// Offscreen: draw logo with holes using evenodd fill
+const offC = document.createElement('canvas');
+offC.width = 800; offC.height = 800;
+const offCtx = offC.getContext('2d');
+const SC = 800 / 55; // scale factor
+
+function buildLogoPath(ctx2d) {
+  ctx2d.clearRect(0, 0, 800, 800);
+  ctx2d.save();
+  ctx2d.scale(SC, SC);
+
+  // Use evenodd so inner holes cut through
+  ctx2d.fillStyle = '#fff';
+
+  // ── Shape R (right bottom) ──
+  ctx2d.beginPath();
+  ctx2d.moveTo(43.96875, 37.6875);
+  ctx2d.bezierCurveTo(49.308594,39.765625,52.800781,44.785156,52.816406,50.523438);
+  ctx2d.lineTo(47.796875,50.53125);
+  ctx2d.bezierCurveTo(47.820312,45.863281,44.109375,41.996094,39.40625,41.796875);
+  ctx2d.lineTo(31.851562,41.792969);
+  ctx2d.lineTo(31.851562,50.523438);
+  ctx2d.lineTo(26.230469,50.527344);
+  ctx2d.lineTo(26.226562,26.578125);
+  ctx2d.lineTo(31.851562,26.578125);
+  ctx2d.lineTo(31.847656,36.554688);
+  ctx2d.lineTo(38.171875,36.554688);
+  ctx2d.lineTo(43.832031,30.257812);
+  ctx2d.lineTo(45.523438,28.394531);
+  ctx2d.lineTo(52.832031,28.402344);
+  ctx2d.closePath();
+  ctx2d.fill();
+
+  // ── Shape N (left bottom) ──
+  ctx2d.beginPath();
+  ctx2d.moveTo(11.632812,32.917969);
+  ctx2d.bezierCurveTo(10.414062,33.183594,9.425781,33.878906,8.746094,34.890625);
+  ctx2d.bezierCurveTo(7.863281,36.207031,7.605469,37.773438,7.617188,39.375);
+  ctx2d.lineTo(7.617188,50.527344);
+  ctx2d.lineTo(1.988281,50.527344);
+  ctx2d.lineTo(1.984375,39.195312);
+  ctx2d.lineTo(10.003906,29.347656);
+  ctx2d.bezierCurveTo(10.652344,28.800781,11.371094,28.484375,12.1875,28.289062);
+  ctx2d.bezierCurveTo(13.589844,28.003906,15.007812,27.9375,16.421875,28.164062);
+  ctx2d.bezierCurveTo(19.171875,28.601562,21.433594,30.367188,22.550781,32.90625);
+  ctx2d.bezierCurveTo(23.105469,34.164062,23.367188,35.476562,23.402344,36.878906);
+  ctx2d.lineTo(23.40625,50.527344);
+  ctx2d.lineTo(17.785156,50.527344);
+  ctx2d.lineTo(17.785156,37.453125);
+  ctx2d.bezierCurveTo(17.726562,35.40625,16.878906,33.589844,14.851562,33.007812);
+  ctx2d.bezierCurveTo(13.808594,32.707031,12.726562,32.679688,11.632812,32.917969);
+  ctx2d.fill();
+
+  // ── Vertical bar ──
+  ctx2d.fillRect(26.183594, 0, 5.625, 23.957031);
+
+  // ── Shape A (top right) — outer with hole ──
+  ctx2d.beginPath();
+  // outer
+  ctx2d.moveTo(54.652344,9.476562);
+  ctx2d.bezierCurveTo(54.652344,8.6875,54.554688,7.964844,54.378906,7.203125);
+  ctx2d.bezierCurveTo(53.644531,4.015625,51.070312,2.023438,47.914062,1.453125);
+  ctx2d.bezierCurveTo(46.054688,1.121094,44.1875,1.125,42.335938,1.449219);
+  ctx2d.bezierCurveTo(38.964844,2.148438,36.558594,4.15625,35.449219,7.457031);
+  ctx2d.lineTo(40.636719,9.1875);
+  ctx2d.bezierCurveTo(41.023438,7.632812,41.839844,6.386719,43.40625,5.957031);
+  ctx2d.bezierCurveTo(44.558594,5.675781,45.757812,5.675781,46.902344,5.996094);
+  ctx2d.bezierCurveTo(47.617188,6.195312,48.195312,6.605469,48.601562,7.210938);
+  ctx2d.bezierCurveTo(48.976562,7.785156,49.207031,8.417969,49.203125,9.105469);
+  ctx2d.lineTo(49.199219,10.578125);
+  ctx2d.lineTo(42.917969,10.585938);
+  ctx2d.bezierCurveTo(41.738281,10.585938,40.632812,10.734375,39.515625,11.0625);
+  ctx2d.bezierCurveTo(37.113281,11.765625,35.1875,13.417969,34.707031,15.929688);
+  ctx2d.bezierCurveTo(34.511719,16.984375,34.519531,18.015625,34.714844,19.066406);
+  ctx2d.bezierCurveTo(35.023438,20.664062,35.90625,22.015625,37.234375,22.957031);
+  ctx2d.bezierCurveTo(38.644531,23.957031,40.292969,24.476562,42.027344,24.566406);
+  ctx2d.bezierCurveTo(43.214844,24.625,44.324219,24.574219,45.488281,24.316406);
+  ctx2d.bezierCurveTo(46.046875,24.078125,46.796875,23.996094,47.214844,23.484375);
+  ctx2d.lineTo(54.664062,14.335938);
+  ctx2d.closePath();
+  // inner hole (counter-clockwise)
+  ctx2d.moveTo(46.519531,19.5);
+  ctx2d.bezierCurveTo(48.410156,18.632812,49.347656,16.824219,49.207031,14.769531);
+  ctx2d.lineTo(43.28125,14.773438);
+  ctx2d.bezierCurveTo(42.550781,14.773438,41.878906,14.953125,41.273438,15.316406);
+  ctx2d.bezierCurveTo(40.597656,15.714844,40.242188,16.390625,40.195312,17.164062);
+  ctx2d.bezierCurveTo(40.09375,18.886719,41.457031,19.832031,43.109375,19.992188);
+  ctx2d.bezierCurveTo(44.269531,20.109375,45.429688,19.996094,46.519531,19.5);
+  ctx2d.closePath();
+  ctx2d.fill('evenodd');
+
+  // ── Shape B (top left) — outer with hole ──
+  ctx2d.beginPath();
+  // outer
+  ctx2d.moveTo(23.097656,9.550781);
+  ctx2d.bezierCurveTo(22.6875,7.402344,21.714844,5.453125,20.167969,3.929688);
+  ctx2d.bezierCurveTo(18.492188,2.28125,16.253906,1.335938,13.910156,1.21875);
+  ctx2d.bezierCurveTo(11.914062,1.113281,9.828125,1.425781,8.191406,2.566406);
+  ctx2d.bezierCurveTo(7.492188,3.050781,6.960938,3.695312,6.476562,4.382812);
+  ctx2d.lineTo(5.703125,4.378906);
+  ctx2d.lineTo(5.699219,0.00390625);
+  ctx2d.lineTo(0.0585938,0.0078125);
+  ctx2d.lineTo(0.0546875,13.265625);
+  ctx2d.lineTo(7.449219,22.359375);
+  ctx2d.bezierCurveTo(7.730469,22.703125,7.945312,23.03125,8.339844,23.246094);
+  ctx2d.bezierCurveTo(9.835938,24.453125,11.871094,24.625,13.769531,24.574219);
+  ctx2d.bezierCurveTo(18.441406,24.453125,22.058594,21.074219,23.035156,16.574219);
+  ctx2d.bezierCurveTo(23.289062,15.417969,23.371094,14.296875,23.375,13.113281);
+  ctx2d.bezierCurveTo(23.378906,11.902344,23.335938,10.773438,23.097656,9.550781);
+  ctx2d.closePath();
+  // inner hole — circle approx (counter-clockwise)
+  ctx2d.moveTo(17.46875,15.433594);
+  ctx2d.bezierCurveTo(17.863281,13.867188,17.859375,11.757812,17.429688,10.207031);
+  ctx2d.bezierCurveTo(16.917969,8.378906,15.5625,6.96875,13.734375,6.410156);
+  ctx2d.bezierCurveTo(11.296875,5.664062,8.425781,6.265625,6.855469,8.351562);
+  ctx2d.bezierCurveTo(6.28125,9.121094,5.929688,9.992188,5.761719,10.953125);
+  ctx2d.bezierCurveTo(5.433594,12.851562,5.519531,15.433594,6.578125,17.0625);
+  ctx2d.bezierCurveTo(8.019531,19.273438,10.53125,20.023438,13.101562,19.539062);
+  ctx2d.bezierCurveTo(15.238281,19.128906,16.9375,17.535156,17.46875,15.433594);
+  ctx2d.closePath();
+  ctx2d.fill('evenodd');
+
+  ctx2d.restore();
+}
+
+buildLogoPath(offCtx);
+const imgData = offCtx.getImageData(0, 0, 800, 800);
+
+// Sample points
+const logoPoints = [];
+const step = 11;
+const DEPTH_LAYERS = 3; // thickness
+
+for (let y = 0; y < 800; y += step) {
+  for (let x = 0; x < 800; x += step) {
+    const idx = (y * 800 + x) * 4;
+    if (imgData.data[idx + 3] > 128) {
+      for (let d = 0; d < DEPTH_LAYERS; d++) {
+        const zVal = (d / (DEPTH_LAYERS - 1) - 0.5) * 0.2; // -0.1 to +0.1
+        logoPoints.push({
+          x: (x / 800 - 0.5) * 2,
+          y: (y / 800 - 0.5) * 2,
+          z: zVal,
+          layer: d,
+          char: CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)],
+          charTimer: Math.floor(Math.random() * 60)
+        });
+      }
+    }
+  }
+}
+
+let t = 0;
+
+function draw() {
+  ctx.fillStyle = '#0a0a0f';
+  ctx.fillRect(0, 0, W, H);
+
+  const rotY = t * 0.5;
+  const rotX = Math.sin(t * 0.25) * 0.12;
+  const cosY = Math.cos(rotY), sinY = Math.sin(rotY);
+  const cosX = Math.cos(rotX), sinX = Math.sin(rotX);
+
+  const projected = logoPoints.map(p => {
+    const x1 = p.x * cosY - p.z * sinY;
+    const z1 = p.x * sinY + p.z * cosY;
+    const y1 = p.y * cosX - z1 * sinX;
+    const z2 = p.y * sinX + z1 * cosX;
+    const fov = 4;
+    const scale = fov / (fov + z2);
+    return {
+      sx: W/2 + x1 * scale * W * 0.38,
+      sy: H/2 + y1 * scale * H * 0.56,
+      z2, scale, p
+    };
+  }).sort((a, b) => a.z2 - b.z2);
+
+  ctx.textBaseline = 'middle';
+  ctx.textAlign = 'center';
+
+  projected.forEach(({ sx, sy, z2, scale, p }) => {
+    p.charTimer--;
+    if (p.charTimer <= 0) {
+      p.char = CODE_CHARS[Math.floor(Math.random() * CODE_CHARS.length)];
+      p.charTimer = 15 + Math.floor(Math.random() * 45);
+    }
+
+    const depth = (z2 + 1.1) / 2.2;
+    // front face brighter, sides dimmer
+    const isFront = p.layer === DEPTH_LAYERS - 1;
+    const isBack  = p.layer === 0;
+    const brightness = isFront ? 0.95 : isBack ? 0.25 : 0.6;
+
+    const r = Math.floor(160 + depth * 80);
+    const g = Math.floor(175 + depth * 70);
+    const b2 = Math.floor(220 + depth * 35);
+    const alpha = brightness * (0.5 + depth * 0.5);
+
+    const fs = Math.max(6, Math.floor(9 * scale * 1.3));
+    ctx.font = `bold ${fs}px 'Courier New', monospace`;
+    ctx.fillStyle = `rgba(${r},${g},${b2},${alpha})`;
+    ctx.fillText(p.char, sx, sy);
+  });
+
+  // faint bg noise
+  ctx.font = '8px Courier New';
+  ctx.textAlign = 'left';
+  for (let i = 0; i < 25; i++) {
+    const bx = ((i * 173 + t * 10) % W);
+    const by = ((i * 97 + t * 15) % H);
+    ctx.fillStyle = 'rgba(80,110,180,0.05)';
+    ctx.fillText(CODE_CHARS[Math.floor((t * 3 + i * 7)) % CODE_CHARS.length], bx, by);
+  }
+
+  t += 0.028;
+  requestAnimationFrame(draw);
+}
+
+draw();
+</script>
