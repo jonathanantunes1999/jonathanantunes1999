@@ -8,7 +8,7 @@
 
 **Web Designer & Frontend Developer**
 
-Crio websites rápidos, limpos e com identidade para negócios que merecem presença online a sério.
+I build fast, clean websites with identity for businesses that take their online presence seriously.
 
 [![Website](https://img.shields.io/badge/blankstudios.pt-000000?style=for-the-badge&logo=google-chrome&logoColor=white)](https://blankstudios.pt)
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0A66C2?style=for-the-badge&logo=linkedin&logoColor=white)](https://linkedin.com/in/jonathanantunes-pt)
@@ -17,13 +17,13 @@ Crio websites rápidos, limpos e com identidade para negócios que merecem prese
 
 ---
 
-### 👤 Sobre mim
+### 👤 About me
 
-Sou web designer e fundador da **Blank Studios**, uma agência focada em dar presença online a pequenos e médios negócios em Lisboa e arredores.
+I'm a web designer and founder of **Blank Studios**, an agency focused on getting small and medium businesses in Lisbon online.
 
-Trabalho com HTML, CSS e JavaScript puro — sem frameworks desnecessários, sem peso extra. Cada site que faço é pensado para ser rápido, fácil de manter e visualmente consistente com a identidade do negócio.
+I work with pure HTML, CSS and JavaScript — no unnecessary frameworks, no bloat. Every site I build is designed to be fast, easy to maintain and visually consistent with the business identity.
 
-Também ajudo clientes com **SEO**, **branding** e gestão de **redes sociais**.
+I also help clients with **SEO**, **branding** and **social media** management.
 
 ---
 
@@ -38,14 +38,14 @@ Também ajudo clientes com **SEO**, **branding** e gestão de **redes sociais**.
 
 ---
 
-### 🚀 Projetos
+### 🚀 Projects
 
-| Projeto | Descrição | Stack |
-|--------|-----------|-------|
-| [Blank Studios](https://blankstudios.pt) | Agência web — site institucional | HTML · CSS · JS |
-| [AGT Obras](https://github.com/jonathanantunes1999/AGT) | Site para empresa de construção civil | HTML · CSS · JS |
-| [Taberna Sakra](https://github.com/jonathanantunes1999/Tabua-d-aco) | Demo site para restaurante em Lisboa | HTML · CSS · JS |
+| Project | Description | Stack |
+|---------|-------------|-------|
+| [Blank Studios](https://blankstudios.pt) | Web agency — institutional site | HTML · CSS · JS |
+| [AGT Obras](https://github.com/jonathanantunes1999/AGT) | Site for a civil construction company | HTML · CSS · JS |
+| [Taberna Sakra](https://github.com/jonathanantunes1999/Tabua-d-aco) | Demo site for a Lisbon restaurant | HTML · CSS · JS |
 
 ---
 
-### 📍 Lisboa, Portugal
+### 📍 Lisbon, Portugal
